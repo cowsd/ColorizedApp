@@ -8,7 +8,9 @@
 import UIKit
 
 final class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var colorDisplayView: UIView!
+    
     @IBOutlet weak var redValueLabel: UILabel!
     @IBOutlet weak var greenValueLabel: UILabel!
     @IBOutlet weak var blueValueLabel: UILabel!
@@ -20,21 +22,32 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-
-    @IBAction func sliderValueChanged(_ sender: UISlider) {
-        if sender == redSlider {
-            redValueLabel.text = formatSliderValue(sender.value)
-            } else if sender == greenSlider {
-                greenValueLabel.text = formatSliderValue(sender.value)
-            } else if sender == blueSlider {
-                blueValueLabel.text = formatSliderValue(sender.value)
-            }
+        
+        colorDisplayView.layer.cornerRadius = 16
     }
     
-    private func formatSliderValue(_ value: Float) -> String {
-        return value.formatted(.number.precision(.fractionLength(2)))
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let sliderToLabel: [UISlider: UILabel] = [
+            redSlider: redValueLabel,
+            greenSlider: greenValueLabel,
+            blueSlider: blueValueLabel
+        ]
+        
+        if let label = sliderToLabel[sender] {
+            label.text = sender.value.formatted(.number.precision(.fractionLength(2)))
+        }
+            
+        updateColorDisplayView()
     }
+    
+    
+    private func updateColorDisplayView() {
+        colorDisplayView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1.0)
+    }
+    
 }
-
