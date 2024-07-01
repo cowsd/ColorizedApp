@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class SettingsViewController: UIViewController {
 // MARK: - IB Outlets
     @IBOutlet weak var colorDisplayView: UIView!
     
@@ -18,18 +18,29 @@ final class ViewController: UIViewController {
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
+    
+    
+// MARK: - Public Properties
+    var targetColor: UIColor!
+    weak var delegate: SettingsViewControllerDelegate?
 
 // MARK: - View Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
         colorDisplayView.layer.cornerRadius = 16
-        setColor()
+        
+        let rgbValues = targetColor.getRGBValues()
+
+        redSlider.value = rgbValues.red
+        greenSlider.value = rgbValues.green
+        blueSlider.value = rgbValues.blue
         
         redValueLabel.text = string(from: redSlider)
         greenValueLabel.text = string(from: greenSlider)
         blueValueLabel.text = string(from: blueSlider)
-
+        
+        setColor()
     }
     
 // MARK: - IB Actions
@@ -44,6 +55,20 @@ final class ViewController: UIViewController {
         default:
             blueValueLabel.text = string(from: blueSlider)
         }
+    }
+    
+    @IBAction func doneButtonDidTapped() {
+        delegate?.didSelectColor(
+            UIColor(
+                red: redSlider.value.cgFloat(),
+                green: greenSlider.value.cgFloat(),
+                blue: blueSlider.value.cgFloat(),
+                alpha: 1.0
+            )
+        )
+        
+        dismiss(animated: true)
+        
     }
     
 // MARK: - Private Methods
@@ -70,4 +95,19 @@ extension Float {
         CGFloat(self)
     }
     
+}
+
+// MARK: - RGB Color Extractor
+
+extension UIColor {
+    func getRGBValues() -> (red: Float, green: Float, blue: Float) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return (Float(red), Float(green), Float(blue))
+    }
 }
