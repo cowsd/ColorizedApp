@@ -13,27 +13,40 @@ protocol SettingsViewControllerDelegate: AnyObject {
 
 final class HomeViewController: UIViewController {
     
-    var targetColor = UIColor.systemGray6
-
+    var currentColor = UIColor.systemGray6
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = targetColor
+        setupNavigationBarAppearance()
+        view.backgroundColor = currentColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let settingsVC = segue.destination as? SettingsViewController {
-            settingsVC.targetColor = targetColor
+            settingsVC.currentColor = currentColor
             settingsVC.delegate = self
-            print("Works")
         }
     }
     
 }
 
+// MARK: - SettingsVC Delegate
 extension HomeViewController: SettingsViewControllerDelegate {
     func didSelectColor(_ color: UIColor) {
         view.backgroundColor = color
-        targetColor = color
+        currentColor = color
     }
-    
 }
+
+// MARK: - Navigation Bar Appearance
+private extension HomeViewController {
+    func setupNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+}
+

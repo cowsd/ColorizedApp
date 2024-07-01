@@ -8,7 +8,7 @@
 import UIKit
 
 final class SettingsViewController: UIViewController {
-// MARK: - IB Outlets
+    // MARK: - IB Outlets
     @IBOutlet weak var colorDisplayView: UIView!
     
     @IBOutlet weak var redValueLabel: UILabel!
@@ -23,21 +23,21 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak var greenTextField: UITextField!
     @IBOutlet weak var blueTextField: UITextField!
     
-// MARK: - Public Properties
-    var targetColor: UIColor!
+    // MARK: - Public Properties
+    var currentColor: UIColor!
     weak var delegate: SettingsViewControllerDelegate?
-
-// MARK: - View Life Cycles
+    
+    // MARK: - View Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         redTextField.delegate = self
         greenTextField.delegate = self
         blueTextField.delegate = self
         
         colorDisplayView.layer.cornerRadius = 16
         
-        let rgbValues = targetColor.getRGBValues()
+        let rgbValues = currentColor.getRGBValues()
         setupSlider(redSlider, withValue: rgbValues.red)
         setupSlider(greenSlider, withValue: rgbValues.green)
         setupSlider(blueSlider, withValue: rgbValues.blue)
@@ -50,7 +50,7 @@ final class SettingsViewController: UIViewController {
         view.endEditing(true)
     }
     
-// MARK: - IB Actions
+    // MARK: - IB Actions
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         updateColorView()
@@ -70,7 +70,7 @@ final class SettingsViewController: UIViewController {
         dismiss(animated: true)
     }
     
-// MARK: - Private Methods
+    // MARK: - Private Methods
     private func updateColorView() {
         colorDisplayView.backgroundColor = UIColor(
             red: redSlider.value.cgFloat(),
@@ -95,17 +95,17 @@ final class SettingsViewController: UIViewController {
     
 }
 // MARK: - Slider Setup
-extension SettingsViewController {
-    private func string(from slider: UISlider) -> String {
+private extension SettingsViewController {
+    func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
     
-    private func setupSlider(_ slider: UISlider, withValue value: Float) {
+    func setupSlider(_ slider: UISlider, withValue value: Float) {
         slider.value = value
         updateSliderUI(for: slider)
     }
     
-    private func updateSliderUI(for slider: UISlider) {
+    func updateSliderUI(for slider: UISlider) {
         let valueString = string(from: slider)
         switch slider {
         case redSlider:
@@ -155,8 +155,8 @@ extension SettingsViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           textField.resignFirstResponder()
-           return true
-       }
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
