@@ -18,7 +18,6 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = targetColor
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
