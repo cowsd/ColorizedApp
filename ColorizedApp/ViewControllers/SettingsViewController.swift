@@ -19,19 +19,27 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
+    @IBOutlet weak var redTextField: UITextField!
+    @IBOutlet weak var greenTextField: UITextField!
+    @IBOutlet weak var blueTextField: UITextField!
+    
     
 // MARK: - Public Properties
     var targetColor: UIColor!
     weak var delegate: SettingsViewControllerDelegate?
 
+    
 // MARK: - View Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        redTextField.delegate = self
+        greenTextField.delegate = self
+        blueTextField.delegate = self
         
         colorDisplayView.layer.cornerRadius = 16
         
         let rgbValues = targetColor.getRGBValues()
-
         redSlider.value = rgbValues.red
         greenSlider.value = rgbValues.green
         blueSlider.value = rgbValues.blue
@@ -40,7 +48,17 @@ final class SettingsViewController: UIViewController {
         greenValueLabel.text = string(from: greenSlider)
         blueValueLabel.text = string(from: blueSlider)
         
+        redTextField.text = string(from: redSlider)
+        greenTextField.text = string(from: greenSlider)
+        blueTextField.text = string(from: blueSlider)
+        
         setColor()
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
 // MARK: - IB Actions
@@ -50,10 +68,13 @@ final class SettingsViewController: UIViewController {
         switch sender {
         case redSlider:
             redValueLabel.text = string(from: redSlider)
+            redTextField.text = string(from: redSlider)
         case greenSlider:
             greenValueLabel.text = string(from: greenSlider)
+            greenTextField.text = string(from: greenSlider)
         default:
             blueValueLabel.text = string(from: blueSlider)
+            blueTextField.text = string(from: blueSlider)
         }
     }
     
@@ -68,7 +89,6 @@ final class SettingsViewController: UIViewController {
         )
         
         dismiss(animated: true)
-        
     }
     
 // MARK: - Private Methods
@@ -86,7 +106,56 @@ final class SettingsViewController: UIViewController {
         String(format: "%.2f", slider.value)
     }
     
+    private func showAlert(for textField: UITextField) {
+        let alert = UIAlertController(title: "Invalid Value", message: "Enter value between 0.00 and 1", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            textField.becomeFirstResponder()
+        }))
+        present(alert, animated: true)
+    }
+    
+    
 }
+// MARK: - UITextFieldDelegate
+
+extension SettingsViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text, let value = Float(text), value >= 0, value <= 1 else {
+            showAlert(for: textField)
+            return
+        }
+        
+        let roundedValue = round(value * 100) / 100.0
+        let roundedString = String(format: "%.2f", roundedValue)
+        
+        switch textField {
+        case redTextField:
+            redSlider.value = roundedValue
+            redValueLabel.text = roundedString
+            redTextField.text = roundedString
+        case greenTextField:
+            greenSlider.value = roundedValue
+            greenValueLabel.text = roundedString
+            greenTextField.text = roundedString
+        default:
+            blueSlider.value = roundedValue
+            blueValueLabel.text = roundedString
+            blueTextField.text = roundedString
+        }
+        
+        textField.resignFirstResponder()
+        setColor()
+        return
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+       }
+    
+}
+
 
 // MARK: - CGFloat Converter
 

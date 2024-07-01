@@ -27,11 +27,9 @@ final class HomeViewController: UIViewController {
             settingsVC.delegate = self
             print("Works")
         }
-        
     }
     
 }
-
 
 extension HomeViewController: SettingsViewControllerDelegate {
     func didSelectColor(_ color: UIColor) {
