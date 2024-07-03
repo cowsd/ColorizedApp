@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="IXm-VG-Rcg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
                     <navigationItem key="navigationItem" title="Colorized App" id="7Xk-au-d4H">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="dOe-Af-MC9">
@@ -39,23 +39,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3a-dI-Ygn">
-                                <rect key="frame" x="20" y="20" width="280" height="129.5"/>
+                                <rect key="frame" x="20" y="20" width="280" height="276.5"/>
                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="3ZG-jx-gOC">
-                                <rect key="frame" x="20" y="189.5" width="280" height="150"/>
+                                <rect key="frame" x="20" y="336.5" width="280" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nFX-g9-xyL">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Red:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drQ-cb-g7i">
-                                                <rect key="frame" x="0.0" y="6.5" width="51" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="7" width="51" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAc-dG-gaL">
-                                                <rect key="frame" x="59" y="6.5" width="40" height="20.5"/>
+                                                <rect key="frame" x="59" y="7" width="40" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="zql-pC-0z2"/>
                                                 </constraints>
@@ -76,7 +76,7 @@
                                                     <constraint firstAttribute="width" constant="44" id="0ya-cU-CIg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -111,7 +111,7 @@
                                                     <constraint firstAttribute="width" constant="44" id="WVA-lC-GU5"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -145,7 +145,7 @@
                                                     <constraint firstAttribute="width" constant="44" id="mec-ZH-Zu7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -177,7 +177,7 @@
                             <constraint firstAttribute="trailing" secondItem="3ZG-jx-gOC" secondAttribute="trailing" constant="20" id="IgD-K8-whf"/>
                             <constraint firstItem="9e2-f0-htx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vrh-mt-imN"/>
                             <constraint firstItem="g3a-dI-Ygn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ajv-lC-NNU"/>
-                            <constraint firstItem="9e2-f0-htx" firstAttribute="top" secondItem="3ZG-jx-gOC" secondAttribute="bottom" multiplier="4.3:3" constant="1" id="g4G-tg-ew9"/>
+                            <constraint firstItem="9e2-f0-htx" firstAttribute="top" secondItem="3ZG-jx-gOC" secondAttribute="bottom" constant="1" id="g4G-tg-ew9"/>
                             <constraint firstAttribute="bottom" secondItem="9e2-f0-htx" secondAttribute="bottom" constant="40" id="k2a-gv-sdp"/>
                         </constraints>
                     </view>
@@ -186,7 +186,7 @@
                         <outlet property="blueSlider" destination="wt0-we-UhB" id="uhZ-gN-eZd"/>
                         <outlet property="blueTextField" destination="KZQ-XH-JzP" id="wut-5N-Sns"/>
                         <outlet property="blueValueLabel" destination="AYJ-vF-nKO" id="RLS-vQ-b8G"/>
-                        <outlet property="colorDisplayView" destination="g3a-dI-Ygn" id="qpp-fE-uuc"/>
+                        <outlet property="colorView" destination="g3a-dI-Ygn" id="qpp-fE-uuc"/>
                         <outlet property="greenSlider" destination="6FM-9V-Kvq" id="WGn-qI-DEW"/>
                         <outlet property="greenTextField" destination="L0X-J4-DyG" id="46r-Fb-brl"/>
                         <outlet property="greenValueLabel" destination="8jb-Th-MXy" id="eeA-Pk-aq5"/>
@@ -224,6 +224,9 @@
         </systemColor>
         <systemColor name="systemFillColor">
             <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
