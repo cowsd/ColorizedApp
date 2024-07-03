@@ -39,11 +39,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3a-dI-Ygn">
-                                <rect key="frame" x="20" y="20" width="280" height="276.5"/>
+                                <rect key="frame" x="20" y="20" width="280" height="100.5"/>
                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="3ZG-jx-gOC">
-                                <rect key="frame" x="20" y="336.5" width="280" height="150"/>
+                                <rect key="frame" x="20" y="160.5" width="280" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nFX-g9-xyL">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
@@ -177,7 +177,7 @@
                             <constraint firstAttribute="trailing" secondItem="3ZG-jx-gOC" secondAttribute="trailing" constant="20" id="IgD-K8-whf"/>
                             <constraint firstItem="9e2-f0-htx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vrh-mt-imN"/>
                             <constraint firstItem="g3a-dI-Ygn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ajv-lC-NNU"/>
-                            <constraint firstItem="9e2-f0-htx" firstAttribute="top" secondItem="3ZG-jx-gOC" secondAttribute="bottom" constant="1" id="g4G-tg-ew9"/>
+                            <constraint firstItem="9e2-f0-htx" firstAttribute="top" secondItem="3ZG-jx-gOC" secondAttribute="bottom" multiplier="4.7:3" constant="1" id="g4G-tg-ew9"/>
                             <constraint firstAttribute="bottom" secondItem="9e2-f0-htx" secondAttribute="bottom" constant="40" id="k2a-gv-sdp"/>
                         </constraints>
                     </view>
